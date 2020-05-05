@@ -6,13 +6,12 @@
 
 .row{
     width:100% !important; 
-    border-right:10px solid red !important;
+    border:10px solid #241D24 !important;
 }
 .col{
-    background-color: aqua !important;
+    background-color: rgb(50, 70, 104) !important;
     border:10px;
 } */
-
 
 
  #maincontainer{
