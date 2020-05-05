@@ -771,6 +771,20 @@ function gameStats() {
 gameStats();
 // var search = "api/";
 
+// function getSuperheroData(targetElement, characterId) {
+//   // configure request url
+//   var url = '' + characterId;
+
+//   // send get request to server
+//   $.get(url, function (characterData) {
+//       // parse response
+//       var parsedCharacterData = JSON.parse(characterData);
+
+//       // set super hero content
+//       setSuperHeroContent(targetElement, parsedCharacterData);
+//   });
+// }
+
 function totalPowerstats(characterData) {
   // destructure character data
   var powerstats = characterData.powerstats;
@@ -827,13 +841,13 @@ function renderHeroesContent(targetElement, characterData) {
   characterDiv.find(".character-combat").text(characterCombat);
 }
 
-function changeDropdown(event) {
+function changeButton(event) {
   // destructure event object
-  var dropDownElement = event.target;
+  var buttonElement = event.target;
   // get select element data-target
-  var targetElement = $(dropDownElement).attr("data-target");
+  var targetElement = $(buttonElement).attr("data-target");
   // get select element value
-  var characterId = $(dropDownElement).val();
+  var characterId = $(buttonElement).val();
   // get superhero data
   getSuperheroData(targetElement, characterId);
   // reset result
