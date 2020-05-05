@@ -1,4 +1,5 @@
 function gameStats(search) {
+
   var id = 70;
   for (var i = 1; i <= id; i++) {
     id[i] = i;
@@ -21,6 +22,19 @@ function gameStats(search) {
       });
     });
   }
+
+  var queryURL =
+    "https://www.superheroapi.com/api.php/" + accessToken + dropDown;
+  // var apiKey = "options"; from drop down menu
+  var accessToken = "/10223238752664036";
+  var dropDown = "powerstats";
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+  });
+
 }
 
 var search = "api/";
