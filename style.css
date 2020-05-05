@@ -1,0 +1,22 @@
+.container {
+    width:100% !important;
+    border-style:solid !important;
+    
+}
+
+.row{
+    width:100% !important; 
+    border-right:10px solid red !important;
+}
+.col{
+    background-color: aqua !important;
+    border:10px;
+} */
+
+
+
+ #maincontainer{
+    margin-top:200px !important;
+   
+   
+}
