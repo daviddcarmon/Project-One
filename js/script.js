@@ -1,4 +1,28 @@
 function gameStats(search) {
+
+  var id = 70;
+  for (var i = 1; i <= id; i++) {
+    id[i] = i;
+
+    var queryURL = "https://www.superheroapi.com/api.php/";
+    // var apiKey = "options"; from drop down menu
+    var accessToken = "10223238752664036/";
+    var dropDown = i;
+    var concatenate = queryURL.concat(accessToken + dropDown);
+    console.log(concatenate);
+    $.ajax({
+      url: concatenate,
+      method: "GET",
+    }).then(function (response) {
+      // console.log(response);
+      console.log("console log: " + queryURL);
+      console.log(concatenate);
+      response.forEach((id) => {
+        console.log(id);
+      });
+    });
+  }
+
   var queryURL =
     "https://www.superheroapi.com/api.php/" + accessToken + dropDown;
   // var apiKey = "options"; from drop down menu
@@ -10,6 +34,7 @@ function gameStats(search) {
   }).then(function (response) {
     console.log(response);
   });
+
 }
 
 var search = "api/";
