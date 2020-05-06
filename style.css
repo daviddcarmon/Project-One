@@ -1,21 +1,51 @@
 .container {
-    width:100% !important;
-    border-style:solid !important;
+    width: 100% !important;
+    /* border-style: 15px solid !important; */
+        border:1px solid black; 
+        
     
 }
 
+
 .row{
-    width:100% !important; 
+    /* width:100% !important;  */
     border:10px solid #241D24 !important;
+    margin-bottom: 0px !important;
 }
+
+.row .col{
+    /* margin: 0.5px !important; */
+    padding: 0px !important;
+}
+
+#charStats{
+    border: 10px solid teal !important;
+
+}
+
+#charResult{
+    border: 10px solid black !important;
+    height: 100% !important;
+    
+        /* min-height:450px; 
+        max-height:450px */
+        }
+
+
+
 .col{
     background-color: rgb(50, 70, 104) !important;
     border:10px;
-} */
+} 
 
 
- #maincontainer{
-    margin-top:200px !important;
-   
-   
+.card{
+    height: auto;
+    margin: auto;
 }
+
+/* .flex {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;  /*or use calc(100vh - header_height)*/
+   */
