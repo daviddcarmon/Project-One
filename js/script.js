@@ -741,12 +741,12 @@ function gameStats() {
     var accessToken = "10223238752664036/";
     var dropDown = i;
     var concatenate = queryURL.concat(accessToken + dropDown);
-    console.log(concatenate);
+    var test = console.log(concatenate);
     $.ajax({
       url: concatenate,
       method: "GET",
     }).then(function (response) {
-      // console.log(response);
+      console.log(response);
       console.log("console log: " + concatenate);
       console.log(concatenate);
       response.forEach((id) => {
@@ -754,22 +754,65 @@ function gameStats() {
       });
     });
   }
-
-  // var queryURL =
-  //   "https://www.superheroapi.com/api.php/" + accessToken + dropDown;
-  // // var apiKey = "options"; from drop down menu
-  // var accessToken = "/10223238752664036";
-  // var dropDown = "powerstats";
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET",
-  // }).then(function (response) {
-  //   console.log(response);
-  // });
 }
-
 gameStats();
+
+// var queryURL =
+//   "https://www.superheroapi.com/api.php/" + accessToken + dropDown;
+// // var apiKey = "options"; from drop down menu
+// var accessToken = "/10223238752664036";
+// var dropDown = "powerstats";
+// $.ajax({
+//   url: queryURL,
+//   method: "GET",
+// }).then(function (response) {
+//   console.log(response);
+// });
+
+/// Marvel API
+
+var timeStamp = "marvelAPI";
+var MarvelApiKey = "b45ce047211df1651f4238f87bdcddb3";
+var MarvelApiKeyPrivate = "6c6dc0777d2cb44c4d0809e202e0f71dd2eae3a6";
+var hash = "400b3bf7e604977dc19260da4c3f407b";
+
+var queryURL;
+
+// function userInputStats() {
+//   /* <form action="#">
+// <p class="range-field">
+//  <input type="range" id="test5" min="0" max="100" />
+//  </p> */
+//   var int = 50;
+//   $("#int").on("change input", function () {
+//     int = $(this).next().siblings().val();
+//   });
+
+//   var userCombat = 50;
+//   $("#combat").on("change input", function () {
+//     userCombat = $(this).next().siblings().val();
+//   });
+
+//   var userDurability = 50;
+//   $("#durab").on("change input", function () {
+//     userCombat = $(this).next().siblings().val();
+//   });
+
+//   var userPower = 50;
+//   $("#durab").on("change input", function () {
+//     userPower = $(this).next().siblings().val();
+//   });
+
+//   var userSpeed = $("#speed").on("change input", function () {
+//     userSpeed = $(this).next().siblings().val();
+//   });
+
+//   var userStrength = $("#str").on("change input", function () {
+//     userStrength = $(this).next().siblings().val();
+//   });
+// }
 // var search = "api/";
+// have default values outisde of the change event
 
 // function getSuperheroData(targetElement, characterId) {
 //   // configure request url
@@ -785,7 +828,7 @@ gameStats();
 //   });
 // }
 
-function totalPowerstats(characterData) {
+function powerStats(characterData) {
   // destructure character data
   var powerstats = characterData.powerstats;
 
