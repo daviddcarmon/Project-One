@@ -1,51 +1,99 @@
 .container {
     width: 100% !important;
-    /* border-style: 15px solid !important; */
+    
         border:1px solid black; 
         
     
 }
 
 
+
 .row{
-    /* width:100% !important;  */
-    border:10px solid #241D24 !important;
+
+    background-color: rgb(1, 3, 15);
     margin-bottom: 0px !important;
+    padding: .5%;
 }
 
-.row .col{
-    /* margin: 0.5px !important; */
-    padding: 0px !important;
+.input-field{
+    color: white !important;
+    font-family: 'Bangers', cursive !important;
+
 }
+
+#subbtn{
+    color: white !important;
+    font-family: 'Bangers', cursive !important;
+}
+
 
 #charStats{
-    border: 10px solid teal !important;
-
+    border: 10px solid rgb(36, 0, 0) !important;
+    font-family: 'Bangers', cursive !important;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(99, 122, 185) !important;
+    
 }
 
+
 #charResult{
-    border: 10px solid black !important;
+    border: 10px solid rgb(36, 0, 0) !important;
     height: 100% !important;
+    text-align: center;
+    color: rgb(99, 122, 185) !important;
+    font-family: 'Bangers', cursive !important;
+
+
+    
     
         /* min-height:450px; 
         max-height:450px */
         }
 
 
+#charDesc{
+    border: 10px solid rgb(36, 0, 0) !important;
+
+    text-align: center !important;
+    color: rgb(99, 122, 185) !important;
+    font-family: 'Bangers', cursive !important;
+
+}
+
+#footer{
+    text-align: center !important;
+    color: white;
+    font-family: 'Bangers', cursive !important;
+
+}
 
 .col{
-    background-color: rgb(50, 70, 104) !important;
-    border:10px;
+    background-color: black !important;
+    border:50px;
+    padding: 10px !important;
 } 
 
 
 .card{
+    border: 10px solid rgb(20, 26, 49) !important;
+
     height: auto;
     margin: auto;
 }
 
-/* .flex {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 100vh;  /*or use calc(100vh - header_height)*/
-   */
+.nav-wrapper{
+    padding-left: 175px !important;
+    font-family: 'Bangers', cursive !important;
+
+}
+
+
+
+#marbtn{
+        width: 150px;
+}
+
+#dcbtn{
+    width: 150px;
+}
