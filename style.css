@@ -24,7 +24,7 @@ display: inline-block;
     background-color: #1B3036;
 }
 .modal .modal-footer .btn{
-    padding-right: 150px;
+    padding-right: 40px;
 }
 .waves-effect{
     background-color: rgb(80, 1, 43);
@@ -83,9 +83,8 @@ p{
     font-size: 23px;
 }
 .modal-content p{
-    font-size: 15px;
+    font-size: 12px;
 }
-
 .cardInfo{
 color: whitesmoke;
 }
@@ -143,3 +142,4 @@ nav .nav-wrapper{
     width: 150px;
     font-size: 27px;
 }
+
