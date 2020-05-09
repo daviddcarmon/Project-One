@@ -1,129 +1,144 @@
 .container {
     width: 100% !important;
-    border: 30px groove #022835;
+    border: 30px groove#022835;
     background-color: black;
-        /* border:30px rgb(2, 8, 44);  */
+    background-repeat: no-repeat;
+    background-image: url("BgIMG/projectonefinal.jpg");
 }
-
 nav .brand-logo{
-    color: #022835;
+    color: #01171F;
     font-size: 50px;
-    padding-left: 250px;
+    font-family: 'Bungee Inline', cursive;
 }
-
-#sectionTwo{
+/* #sectionTwo{
 display: inline-block;
-}
-
+} */
 .row{
-    
     display: inline;
 }
-
-.rowFour.col.s6{
-    
-    display: inline-block;
+.modal .modal-content {
+    border: 10px solid rgb(31, 1, 1);
+    background-color:#01162b;
 }
-
-.input-field label{
+.modal .modal-footer{
+    background-color: #1B3036;
+}
+.modal .modal-footer .btn{
+    padding-right: 1470px;
+}
+.waves-effect{
+    background-color: rgb(80, 1, 43);
+    padding:10px 22px 45px;
+    font-size: 19px;
+    font-family: 'Jockey One', sans-serif;
+}
+/* .input-field label{
     font-size: 27px;
-    padding-left: 146px;
+    padding-left: 20px;
     color: white ;
-    font-family: 'Bangers', cursive;
-}
-
+    font-family: 'Jockey One', sans-serif;
+} */
 #submit {
-    border: 10px solid rgb(36, 0, 0);
+    border: 10px solid rgb(31, 1, 1);
 }
-
-
-
 #subbtn{
-    padding-left: 100px;
+    padding:45px 100px 80px;
     color: white ;
     font-family: 'Bangers', cursive;
-    font-size: 30px;
+    font-size: 50px;
+    font-family: 'Jockey One', sans-serif;
+    background-color: rgb(82, 5, 46);
 }
-
-
-
 .btn-small {
-    
     padding-right: 100px;
 }
-
-.waves-effect.waves-orange .waves-ripple {
-    /* The alpha value allows the text and background color
-    of the button to still show through. */
-     background-color: rgba(121, 85, 72, 0.65);
-   }
-
 #charStats{
-    border: 10px solid rgb(36, 0, 0) ;
-    font-family: 'Bangers', cursive ;
+    border: 10px solid rgb(36, 0, 0);
     font-size: 20px;
     text-align: center;
     color: #E0E2D5;
-    height: 100%;
+    max-height: 100%;
     padding-bottom: 4.6%;
-    
+    font-family: 'Bangers', cursive;
 }
-
-#statHead {
-    color:rgb(45, 79, 90);
+h3 {
+    font-family: 'Jockey One', sans-serif;
+    color: #4EBCE5;
 }
-
+h4 {
+    color: #4EBCE5;
+    text-align: center;
+    font-family: 'Bungee Inline', cursive;
+}
 #charResult{
     border: 10px solid rgb(36, 0, 0) ;
     height: 100%;
     text-align: center;
-    color: rgb(45, 79, 90) ;
+    color: #2D4F5A ;
     font-family: 'Bangers', cursive ;
         }
-
 p{
     color: #E0E2D5;
+    font-family: 'Bangers', cursive;
+    font-size: 23px;
 }
-
+.modal-content p{
+    font-size: 30px;
+}
+.cardInfo{
+color: whitesmoke;
+}
 #charDesc{
    border: 10px solid rgb(36, 0, 0);
-
     text-align: center;
-    color: rgb(45, 79, 90);
-    font-family: 'Bangers', cursive;
-
-}
-#footer{
-    text-align: center;
-    color: white;
     font-family: 'Bangers', cursive;
 }
+#foot.footer.col.s12{
+    font-size: 30px;
+    text-align: center;
+    color:#4EBCE5;
+    font-family: 'Bungee Inline', cursive;
+}
+/* 
+.footer .col .s12 {
+    background-color: #880E4F;
+} */
 .col{
-    background-color: black;
- border:50px;
+    background-color: #01162B;
+    opacity: .78;
+    border:50px;
     padding: 10px;
     height: 100%;
     display: block;
 } 
 .card{
-    border: 10px solid rgb(138, 36, 4);
+    background-color: black;
+    border: 10px solid rgb(36, 0, 0);
     height: auto;
     margin: auto;
 }
-
 .card-content {
-    background-color: rgb(99, 75, 68);
+    background-color: #880E4F;
+    opacity: .6;
 }
-.nav-wrapper{
-    padding-left: 175px;
-    font-family: 'Bangers', cursive;
+.card .card-image .card-title{
+    padding-left: 395px;
+    font-size: 125px;
+    font-family: 'Jockey One', sans-serif;
+    color: #4EBCE5;
+}
+nav .nav-wrapper{
+    background-color: #2D4F5A;
+    padding-left: 20px;
+    font-family: 'Jockey One', sans-serif;
 }
 #marbtn{
+        background-color: rgb(94, 6, 19);
         width: 150px;
         font-size: 27px;
 }
 #dcbtn{
+    background-color: rgb(1, 1, 61);
     width: 150px;
     font-size: 27px;
 }
-

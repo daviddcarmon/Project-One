@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+  $('#modal-content').modal();
+
+
   var heroesInfo = [];
 
   superHeroData(1, 9);
