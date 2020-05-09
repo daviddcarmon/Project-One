@@ -1,9 +1,10 @@
+
 .container {
     width: 100% !important;
     border: 30px groove#022835;
     background-color: black;
     background-repeat: no-repeat;
-    background-image: url("BgIMG/projectonefinal.jpg");
+    background-image: url("BgIMG/projectonefinal4.jpg");
 }
 nav .brand-logo{
     color: #01171F;
@@ -142,5 +143,6 @@ nav .nav-wrapper{
     width: 150px;
     font-size: 27px;
 }
+
 
 
