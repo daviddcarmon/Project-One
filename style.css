@@ -1,36 +1,36 @@
 .container {
-    width: 100% !important;
-    border: 30px groove#022835;
-    background-color: black;
-    background-repeat: no-repeat;
-    background-image: url("BgIMG/projectonefinal.jpg");
+  width: 100% !important;
+  border: 30px groove#022835;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-image: url("BgIMG/projectonefinal.jpg");
 }
-nav .brand-logo{
-    color: #01171F;
-    font-size: 50px;
-    font-family: 'Bungee Inline', cursive;
+nav .brand-logo {
+  color: #01171f;
+  font-size: 50px;
+  font-family: "Bungee Inline", cursive;
 }
 /* #sectionTwo{
 display: inline-block;
 } */
-.row{
-    display: inline;
+.row {
+  display: inline;
 }
 .modal .modal-content {
-    border: 10px solid rgb(31, 1, 1);
-    background-color:#01162b;
+  border: 10px solid rgb(31, 1, 1);
+  background-color: #01162b;
 }
-.modal .modal-footer{
-    background-color: #1B3036;
+.modal .modal-footer {
+  background-color: #1b3036;
 }
-.modal .modal-footer .btn{
-    padding-right: 150px;
+.modal .modal-footer .btn {
+  padding-right: 1470px;
 }
-.waves-effect{
-    background-color: rgb(80, 1, 43);
-    padding:10px 22px 45px;
-    font-size: 19px;
-    font-family: 'Jockey One', sans-serif;
+.waves-effect {
+  background-color: rgb(80, 1, 43);
+  padding: 10px 22px 45px;
+  font-size: 19px;
+  font-family: "Jockey One", sans-serif;
 }
 /* .input-field label{
     font-size: 27px;
@@ -39,107 +39,106 @@ display: inline-block;
     font-family: 'Jockey One', sans-serif;
 } */
 #submit {
-    border: 10px solid rgb(31, 1, 1);
+  border: 10px solid rgb(31, 1, 1);
 }
-#subbtn{
-    padding:45px 100px 80px;
-    color: white ;
-    font-family: 'Bangers', cursive;
-    font-size: 50px;
-    font-family: 'Jockey One', sans-serif;
-    background-color: rgb(82, 5, 46);
+#subbtn {
+  padding: 45px 100px 80px;
+  color: white;
+  font-family: "Bangers", cursive;
+  font-size: 50px;
+  font-family: "Jockey One", sans-serif;
+  background-color: rgb(82, 5, 46);
 }
 .btn-small {
-    padding-right: 100px;
+  padding-right: 100px;
 }
-#charStats{
-    border: 10px solid rgb(36, 0, 0);
-    font-size: 20px;
-    text-align: center;
-    color: #E0E2D5;
-    max-height: 100%;
-    padding-bottom: 4.6%;
-    font-family: 'Bangers', cursive;
+#charStats {
+  border: 10px solid rgb(36, 0, 0);
+  font-size: 20px;
+  text-align: center;
+  color: #e0e2d5;
+  max-height: 100%;
+  padding-bottom: 4.6%;
+  font-family: "Bangers", cursive;
 }
 h3 {
-    font-family: 'Jockey One', sans-serif;
-    color: #4EBCE5;
+  font-family: "Jockey One", sans-serif;
+  color: #4ebce5;
 }
 h4 {
-    color: #4EBCE5;
-    text-align: center;
-    font-family: 'Bungee Inline', cursive;
+  color: #4ebce5;
+  text-align: center;
+  font-family: "Bungee Inline", cursive;
 }
-#charResult{
-    border: 10px solid rgb(36, 0, 0) ;
-    height: 100%;
-    text-align: center;
-    color: #2D4F5A ;
-    font-family: 'Bangers', cursive ;
-        }
-p{
-    color: #E0E2D5;
-    font-family: 'Bangers', cursive;
-    font-size: 23px;
+#charResult {
+  border: 10px solid rgb(36, 0, 0);
+  height: 100%;
+  text-align: center;
+  color: #2d4f5a;
+  font-family: "Bangers", cursive;
 }
-.modal-content p{
-    font-size: 15px;
+p {
+  color: #e0e2d5;
+  font-family: "Bangers", cursive;
+  font-size: 23px;
 }
-
-.cardInfo{
-color: whitesmoke;
+.modal-content p {
+  font-size: 30px;
 }
-#charDesc{
-   border: 10px solid rgb(36, 0, 0);
-    text-align: center;
-    font-family: 'Bangers', cursive;
+.cardInfo {
+  color: whitesmoke;
 }
-#foot.footer.col.s12{
-    font-size: 30px;
-    text-align: center;
-    color:#4EBCE5;
-    font-family: 'Bungee Inline', cursive;
+#charDesc {
+  border: 10px solid rgb(36, 0, 0);
+  text-align: center;
+  font-family: "Bangers", cursive;
+}
+#foot.footer.col.s12 {
+  font-size: 30px;
+  text-align: center;
+  color: #4ebce5;
+  font-family: "Bungee Inline", cursive;
 }
 /* 
 .footer .col .s12 {
     background-color: #880E4F;
 } */
-.col{
-    background-color: #01162B;
-    opacity: .78;
-    border:50px;
-    padding: 10px;
-    height: 100%;
-    display: block;
-} 
-.card{
-    background-color: black;
-    border: 10px solid rgb(36, 0, 0);
-    height: auto;
-    margin: auto;
+.col {
+  background-color: #01162b;
+  opacity: 0.78;
+  border: 50px;
+  padding: 10px;
+  height: 100%;
+  display: block;
+}
+.card {
+  background-color: black;
+  border: 10px solid rgb(36, 0, 0);
+  height: auto;
+  margin: auto;
 }
 .card-content {
-    background-color: #880E4F;
-    opacity: .6;
+  background-color: #880e4f;
+  opacity: 0.6;
 }
-.card .card-image .card-title{
-    padding-left: 395px;
-    font-size: 125px;
-    font-family: 'Jockey One', sans-serif;
-    color: #4EBCE5;
+.card .card-image .card-title {
+  padding-left: 395px;
+  font-size: 125px;
+  font-family: "Jockey One", sans-serif;
+  color: #4ebce5;
 }
-nav .nav-wrapper{
-    background-color: #2D4F5A;
-    padding-left: 20px;
-    font-family: 'Jockey One', sans-serif;
+nav .nav-wrapper {
+  background-color: #2d4f5a;
+  padding-left: 20px;
+  font-family: "Jockey One", sans-serif;
 }
-#marbtn{
-        background-color: rgb(94, 6, 19);
-        width: 150px;
-        font-size: 27px;
+#marbtn {
+  background-color: rgb(94, 6, 19);
+  width: 150px;
+  font-size: 27px;
 }
-#dcbtn{
-    background-color: rgb(1, 1, 61);
-    width: 150px;
-    font-size: 27px;
+#dcbtn {
+  background-color: rgb(1, 1, 61);
+  width: 150px;
+  font-size: 27px;
 }
