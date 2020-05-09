@@ -1,7 +1,9 @@
 $(document).ready(function () {
   var heroesInfo = [];
+  var marvalInfo = [];
+  var marvalPressed = false;
 
-  superHeroData(1, 9);
+  superHeroData(1, 200);
   // superHeroData(100, 199);
   // superHeroData(200, 299);
   // superHeroData(300, 399);
@@ -27,7 +29,7 @@ $(document).ready(function () {
       heroesInfo.push(response);
       // console.log("end: " + end);
       superHeroData(value + 1, end);
-      console.log(heroesInfo);
+      // console.log(heroesInfo);
     });
   }
   // superHeroData();
@@ -52,12 +54,16 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log("marvel " + response);
+      //use the heroesInfo
+      marvalPressed = true;
+      calculateHeroStats();
+      //console.log("marvel " + response);
     });
   }
   marvelAPICall("hulk");
   $("#submit").on("click", function (event) {
     event.preventDefault();
+    clear();
     var userSearch = $("#first_name").val();
     calculateHeroStats();
     //marvelAPICallmarvelAPICall(userSearch);
@@ -94,97 +100,310 @@ $(document).ready(function () {
     userStrength = $(this).next().siblings().val();
   });
 
-  function calculateUserStats() {
-    var userTotalStats =
-      userIntelligence +
-      userCombat +
-      userDurability +
-      userPower +
-      userSpeed +
-      userStrength;
-    // console.log(userTotalStats);
-  }
-  calculateUserStats();
+  var nearest = 700;
 
   function calculateHeroStats() {
-    var superheroStats = heroesInfo;
-    superheroStats.forEach((hero) => {
-      var powerstats = Object.values(parseInt(hero.powerstats)); // array of values in powerstats
-      var totalStats = 0;
-      // $.each(powerStats, function (index, value) {
-      //   console.log("value: " + value);
-      // });
+    var closestHero = [{}, 700];
+    var sideKick = [{}, 300];
+    var userTotalStats =
+      parseInt(userIntelligence) +
+      parseInt(userCombat) +
+      parseInt(userDurability) +
+      parseInt(userPower) +
+      parseInt(userSpeed) +
+      parseInt(userStrength);
+    console.log(userTotalStats);
+    if (marvalPressed === true) {
+      // THIS IS MARVAL API
+      var superheroStats = marvalInfo;
 
-      console.log(`${hero.name} stats are ${powerstats} total = ${totalStats}`);
+      marvalPressed = false;
+    } else {
+      // THIS IS HEROAPI
+      var superheroStats = heroesInfo;
+      var superSideKick = heroesInfo;
+    }
+
+    superheroStats.forEach((hero) => {
+      var powerstats = Object.values(hero.powerstats);
+
+      //converted array to array of numbers
+      var result = powerstats.map(Number);
+      // console.log(result);
+
+      var finalArr = result.filter(Boolean);
+      // gets total stats of the hero in totalStats
+      for (var i = 0; i < result.length; i++) {
+        var totalStats = finalArr.reduce((a, b) => a + b, 0);
+      }
+      // gets the hero id in heroId
+      var heroId = hero.id;
+
+      var totalHero = {
+        id: heroId,
+        total: totalStats,
+      };
+      // console.log(totalHero);
+      //now we need to decide if the hero is closest to the users hero
+      // console.log(typeof userTotalStats);
+      var different = Math.abs(totalHero.total - userTotalStats);
+      var nextDifferent = Math.abs(totalHero.total - userTotalStats + 1);
+      var compare = closestHero[1];
+      var compareSideKick = sideKick[1];
+      // console.log(" difference", different, closestHero);
+      if (different < compare) {
+        // console.log("new hero", totalHero);
+        closestHero = [totalHero, different];
+      }
+      if (nextDifferent < compareSideKick) {
+        sideKick = [totalHero, nextDifferent];
+        console.log("sidekick: ", totalHero);
+      }
+      // console.log(typeof heroId, heroId);
+      if (hero.id === "200") {
+        // console.log("all don!");
+        finishedHero(closestHero, sideKick);
+      }
     });
   }
-  var bestSuperHeroMatch = {};
-  var bestMarvelMatch = {};
+
+  function finishedHero(closestHero, sideKick) {
+    heroesInfo.forEach((hero) => {
+      if (hero.id === closestHero[0].id) {
+        // console.log();
+        renderHeroesContent(hero);
+        // console.log("render hero: ", hero);
+        //console.log(hero);
+      }
+      if (hero.id === sideKick[1].id) {
+        renderHeroesContent(hero);
+      }
+    });
+  }
+  // console.log(heroesInfo.find());
+  // var bestMarvelMatch = {};
 
   // if(userTotalStats <= superheroStats + 10 || userTotalStats >= superHeroData - 10)
 
-  for (var i = 0; i < heroesInfo.length; i++) {
-    var difference = superheroStats - userTotalStats;
-    if (difference < bestDifference) {
-      bestSuperHeroMatch = "returned superhero";
-      bestDifference = difference;
-    }
-  }
-
-  function powerStats(characterData) {
+  function renderHeroesContent(heroesInfo) {
+    console.log("RENDER!", heroesInfo);
     // destructure character data
-    var powerstats = characterData.powerstats;
-    console.log(powerstats);
-    // destructure powerstats
-    var intelligence = powerstats.intelligence;
-    var strength = powerstats.strength;
-    var speed = powerstats.speed;
-    var durability = powerstats.durability;
-    var power = powerstats.power;
-    var combat = powerstats.combat;
-  }
+    var characterName = $("<h4>")
+      .text(heroesInfo.name)
+      .attr("class", "name")
+      .attr("id", "charaName");
+    var characterImage = $("<img>")
+      .attr("src", heroesInfo.image.url)
+      .css({ width: 100, height: 100 })
+      .attr("id", "img");
+    var characterIntelligence = $("<ul>")
+      .text("Intelligence " + heroesInfo.powerstats.intelligence)
+      .attr("id", "intelligence");
+    var characterStrength = $("<ul>")
+      .text("Strength " + heroesInfo.powerstats.strength)
+      .attr("id", "strength");
+    var characterSpeed = $("<ul>")
+      .text("Speed " + heroesInfo.powerstats.speed)
+      .attr("id", "speed");
+    var characterDurability = $("<ul>")
+      .text("Durability " + heroesInfo.powerstats.durability)
+      .attr("id", "durability");
+    var characterPower = $("<ul>").text("Power " + heroesInfo.powerstats.power);
+    var characterCombat = $("<ul>")
+      .text("Combat " + heroesInfo.powerstats.combat)
+      .attr("id", "combat");
+    var space = $("<br>");
 
-  function renderHeroesContent(targetElement, heroesInfo) {
-    if (targetElement === "#dcbtn") {
-      dcCharacter = heroesInfo;
-    }
-    if (targetElement === "#marbtn") {
-      marCharacter = heroesInfo;
-    }
+    var characterBio = $("<p>")
+      .attr("id", "name")
+      .text(heroesInfo.biography["full-name"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    // var characterBio = $("<p>").text(bioString).css({ "font-size": 30 });
+    var characterAliases = $("<p>")
+      .attr("id", "aliases")
+      .text(
+        "Aliases: " +
+          heroesInfo.biography["aliases"][0] +
+          " " +
+          heroesInfo.biography["aliases"][1] +
+          " " +
+          heroesInfo.biography["aliases"][2]
+      )
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAlignment = $("<p>")
+      .attr("id", "alignment")
+      .text("Alignment: " + heroesInfo.biography["alignment"])
+      .css({ "font-size": 26, "line-height": "80%" });
 
-    // destructure character data
-    var characterName = heroesInfo.name;
-    var characterImage = heroesInfo.image.url;
-    var characterIntelligence = heroesInfo.powerstats.intelligence;
-    var characterStrength = heroesInfo.powerstats.strength;
-    var characterSpeed = heroesInfo.powerstats.speed;
-    var characterDurability = heroesInfo.powerstats.durability;
-    var characterPower = heroesInfo.powerstats.power;
-    var characterCombat = heroesInfo.powerstats.combat;
+    var characterAlter = $("<p>")
+      .attr("id", "alter")
+      .text("Alter Ego: " + heroesInfo.biography["alter-egos"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAppearance = $("<p>")
+      .attr("id", "appearance")
+      .text("Fist Appearance: " + heroesInfo.biography["first-appearance"])
+      .css({ "font-size": 26, "line-height": "80%" });
 
+    var characterBirth = $("<p>")
+      .attr("id", "birth")
+      .text("Birth place: " + heroesInfo.biography["place-of-birth"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterPublisher = $("<p>")
+      .attr("id", "publisher")
+      .text("Publisher: " + heroesInfo.biography["publisher"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterConnection = $("<p>")
+      .attr("id", "connection")
+      .text("Affiliation: " + heroesInfo.connections["group-affiliation"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterRace = $("<p>")
+      .attr("id", "race")
+      .text("Publisher: " + heroesInfo.appearance["race"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    // var characterPublisher = $("<p>")
+    // .text("Publisher: " + heroesInfo.biography["publisher"])
+    // .css({ "font-size": 26, "line-height": "80%" });
+
+    console.log(typeof heroesInfo.biography);
+    console.log("name: ", characterName);
     // var from MARV api needed
+    var charDiv = $("<div>").attr("class", "charDiv");
+    charDiv.append(
+      characterName,
+      characterImage,
+      characterIntelligence,
+      characterStrength,
+      characterSpeed,
+      characterPower,
+      characterConnection
+    );
+    // $("#hero").after(characterName);
+    // $("#hero").after(characterImage);
+    // $(".name").after(characterIntelligence);
+    // $(".name").after(characterStrength);
+    // $(".name").after(characterSpeed);
+    // $(".name").after(characterPower);
+    // $(".name").after(characterCombat);
+    var heroDiv = $("<div>").attr("id", "hero");
+    var backstory = $("<h3>").text("BACKSTORY");
+    var yourHero = $("<h3>").text("YOUR HERO");
+    heroDiv.append(
+      characterBio,
+      characterAliases,
+      characterAlignment,
+      characterAlter,
+      characterBirth,
+      characterPublisher,
+      characterConnection,
+      characterRace
+    );
+    // $("#backstory").append(characterBio);
+    // $("#backstory").append(characterAliases);
+    // $("#backstory").append(characterAlignment);
+    // $("#backstory").append(characterAlter);
+    // $("#backstory").append(characterAppearance);
+    // $("#backstory").append(characterBirth);
+    // $("#backstory").append(characterPublisher);
+    // $("#backstory").append(characterConnection);
+    // $("#backstory").append(characterRace);
+    $("#charResult").empty();
+    $("#backstory").empty();
+    $("#charResult").append(yourHero, charDiv);
+    $("#backstory").append(backstory, heroDiv);
+  }
 
-    // select corresponding player div
-    var characterDiv = $(targetElement);
+  function renderSideKickContent(heroesInfo) {
+    console.log("RENDER!SIDEKICK", heroesInfo);
 
-    // set background image
-    characterDiv.css("background-image", "url('" + characterImage + "')");
-    // set name
-    characterDiv.find(".character-name").text(characterName);
-    // set image
-    characterDiv.find(".character-image").attr("src", characterImage);
-    // set intelligence
-    characterDiv.find(".character-intelligence").text(characterIntelligence);
-    // set strength
-    characterDiv.find(".character-strength").text(characterStrength);
-    // set speed
-    characterDiv.find(".character-speed").text(characterSpeed);
-    // set durability
-    characterDiv.find(".character-durability").text(characterDurability);
-    // set power
-    characterDiv.find(".character-power").text(characterPower);
-    // set combat
-    characterDiv.find(".character-combat").text(characterCombat);
+    // destructure character data
+    var characterName = $("<h4>").text(heroesInfo.name).attr("class", "name");
+    var characterImage = $("<img>")
+      .attr("src", heroesInfo.image.url)
+      .css({ width: 100, height: 100 });
+    var characterIntelligence = $("<ul>").text(
+      "Intelligence " + heroesInfo.powerstats.intelligence
+    );
+    var characterStrength = $("<ul>").text(
+      "Strength " + heroesInfo.powerstats.strength
+    );
+    var characterSpeed = $("<ul>").text("Speed " + heroesInfo.powerstats.speed);
+    var characterDurability = $("<ul>").text(
+      "Durability " + heroesInfo.powerstats.durability
+    );
+    var characterPower = $("<ul>").text("Power " + heroesInfo.powerstats.power);
+    var characterCombat = $("<ul>").text(
+      "Combat " + heroesInfo.powerstats.combat
+    );
+    var space = $("<br>");
+
+    var characterBio = $("<p>")
+      .text(heroesInfo.biography["full-name"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    // var characterBio = $("<p>").text(bioString).css({ "font-size": 30 });
+    var characterAliases = $("<p>")
+      .text(
+        "Aliases: " +
+          heroesInfo.biography["aliases"][0] +
+          " " +
+          heroesInfo.biography["aliases"][1] +
+          " " +
+          heroesInfo.biography["aliases"][2]
+      )
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAlignment = $("<p>")
+      .text("Alignment: " + heroesInfo.biography["alignment"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterAlter = $("<p>")
+      .text("Alter Ego: " + heroesInfo.biography["alter-egos"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAppearance = $("<p>")
+      .text("Fist Appearance: " + heroesInfo.biography["first-appearance"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterBirth = $("<p>")
+      .text("Birth place: " + heroesInfo.biography["place-of-birth"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterPublisher = $("<p>")
+      .text("Publisher: " + heroesInfo.biography["publisher"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterConnection = $("<p>")
+      .text("Affiliation: " + heroesInfo.connections["group-affiliation"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterRace = $("<p>")
+      .text("Publisher: " + heroesInfo.appearance["race"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    // var characterPublisher = $("<p>")
+    // .text("Publisher: " + heroesInfo.biography["publisher"])
+    // .css({ "font-size": 26, "line-height": "80%" });
+
+    console.log(typeof heroesInfo.biography);
+    console.log("name: ", characterName);
+    // var from MARV api needed
+    // $("#hero").after(characterName);
+    // $("#hero").after(characterImage);
+    // $(".name").after(characterIntelligence);
+    // $(".name").after(characterStrength);
+    // $(".name").after(characterSpeed);
+    // $(".name").after(characterPower);
+    // $(".name").after(characterCombat);
+    // $("#backstory").append(characterBio);
+    // $("#backstory").append(characterAliases);
+    // $("#backstory").append(characterAlignment);
+    // $("#backstory").append(characterAlter);
+    // $("#backstory").append(characterAppearance);
+    // $("#backstory").append(characterBirth);
+    // $("#backstory").append(characterPublisher);
+    // $("#backstory").append(characterConnection);
+    // $("#backstory").append(characterRace);
   }
 
   function changeButton(event) {
@@ -200,3 +419,9 @@ $(document).ready(function () {
     result.find($(".nav-wrapper")).text("");
   }
 });
+
+function clear() {
+  $("#hero").empty();
+  $("#name").empty();
+  $("#backstory").empty();
+}

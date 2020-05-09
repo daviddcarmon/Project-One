@@ -1,127 +1,113 @@
 .container {
-    width: 100% !important;
-        border:1px solid black; 
+  width: 100% !important;
+  border: 30px groove#022835;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-image: url("BgIMG/projectoneBG5.jpg");
 }
-.row{
-    background-color: rgb(1, 3, 15);
-    margin-bottom: 0px !important;
-    padding: .5%;
+nav .brand-logo {
+  color: #01171f;
+  font-size: 50px;
+  padding-left: 250px;
 }
-.input-field{
-    color: white !important;
-    font-family: 'Bangers', cursive !important;
+/* #sectionTwo{
+display: inline-block;
+} */
+.row {
+  display: inline;
 }
-#subbtn{
-    color: white !important;
-    font-family: 'Bangers', cursive !important;
+.input-field label {
+  font-size: 27px;
+  padding-left: 146px;
+  color: white;
+  font-family: "Bangers", cursive;
 }
-#charStats{
-    border: 10px solid rgb(36, 0, 0) !important;
-    font-family: 'Bangers', cursive !important;
-    font-size: 25px;
-    text-align: center;
-    color: rgb(99, 122, 185) !important;
+#submit {
+  border: 10px solid rgb(31, 1, 1);
 }
-#charResult{
-    border: 10px solid rgb(36, 0, 0) !important;
-    height: 100% !important;
-    text-align: center;
-    color: rgb(99, 122, 185) !important;
-    font-family: 'Bangers', cursive !important;
-        /* min-height:450px; 
-        max-height:450px */
-        }
-#charDesc{
-    border: 10px solid rgb(36, 0, 0) !important;
-    text-align: center !important;
-    color: rgb(99, 122, 185) !important;
-    font-family: 'Bangers', cursive !important;
+#subbtn {
+  padding-left: 100px;
+  color: white;
+  font-family: "Bangers", cursive;
+  font-size: 30px;
+  background-color: #660a0a;
 }
-#footer{
-    text-align: center !important;
-    color: white;
-    font-family: 'Bangers', cursive !important;
+.btn-small {
+  padding-right: 100px;
 }
-.col{
-    background-color: black !important;
-    border:50px;
-    padding: 10px !important;
-} 
-.card{
-    border: 10px solid rgb(20, 26, 49) !important;
-    height: auto;
-    margin: auto;
+.waves-effect.waves-orange .waves-ripple {
+  /* The alpha value allows the text and background color
+  of the button to still show through. */
+  background-color: rgba(121, 85, 72, 0.65);
 }
-.nav-wrapper{
-    padding-left: 175px !important;
-    font-family: 'Bangers', cursive !important;
+#charStats {
+  border: 10px solid rgb(36, 0, 0);
+  font-family: "Bangers", cursive;
+  font-size: 20px;
+  text-align: center;
+  color: #e0e2d5;
+  max-height: 100%;
+  padding-bottom: 4.6%;
 }
-#marbtn{
-        width: 150px;
+h3 {
+  /* font-family: avengero-disassembled-font-f43862; src: url ("avengero-disassembled-font-f43862"); */
+  /* font-family: "vengero-disassembled-font-f43862"; src: url ("Marvel/vengero-disassembled-font-f43862"); */
+  color: rgb(131, 13, 13);
 }
-#dcbtn{
-    width: 150px;
-}.container {
-    width: 100% !important;
-        border:1px solid black; 
+/* @font-face{
+  font-family: "vengero-disassembled-font-f43862"; src: url ("Marvel/vengero-disassembled-font-f43862");
+} */
+#charResult {
+  border: 10px solid rgb(36, 0, 0);
+  height: 100%;
+  text-align: center;
+  color: #2d4f5a;
+  font-family: "Bangers", cursive;
 }
-.row{
-    background-color: rgb(1, 3, 15);
-    margin-bottom: 0px !important;
-    padding: .5%;
+p {
+  color: #e0e2d5;
 }
-.input-field{
-    color: white !important;
-    font-family: 'Bangers', cursive !important;
+#charDesc {
+  border: 10px solid rgb(36, 0, 0);
+  text-align: center;
+  font-family: "Bangers", cursive;
 }
-#subbtn{
-    color: white !important;
-    font-family: 'Bangers', cursive !important;
+#foot {
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  font-family: "Bangers", cursive;
 }
-#charStats{
-    border: 10px solid rgb(36, 0, 0) !important;
-    font-family: 'Bangers', cursive !important;
-    font-size: 25px;
-    text-align: center;
-    color: rgb(99, 122, 185) !important;
+.col {
+  background-color: #01162b;
+  opacity: 0.78;
+  border: 50px;
+  padding: 10px;
+  height: 100%;
+  display: block;
 }
-#charResult{
-    border: 10px solid rgb(36, 0, 0) !important;
-    height: 100% !important;
-    text-align: center;
-    color: rgb(99, 122, 185) !important;
-    font-family: 'Bangers', cursive !important;
-        /* min-height:450px; 
-        max-height:450px */
-        }
-#charDesc{
-    border: 10px solid rgb(36, 0, 0) !important;
-    text-align: center !important;
-    color: rgb(99, 122, 185) !important;
-    font-family: 'Bangers', cursive !important;
+.card {
+  background-color: black;
+  border: 10px solid #880e4f;
+  height: auto;
+  margin: auto;
 }
-#footer{
-    text-align: center !important;
-    color: white;
-    font-family: 'Bangers', cursive !important;
+.card-content {
+  background-color: rgb(99, 75, 68);
 }
-.col{
-    background-color: black !important;
-    border:50px;
-    padding: 10px !important;
-} 
-.card{
-    border: 10px solid rgb(20, 26, 49) !important;
-    height: auto;
-    margin: auto;
+.card .card-image .card-title {
+  font-size: 100px;
 }
-.nav-wrapper{
-    padding-left: 175px !important;
-    font-family: 'Bangers', cursive !important;
+nav .nav-wrapper {
+  background-color: #2d4f5a;
+  padding-left: 175px;
+  font-family: "Bangers", cursive;
 }
-#marbtn{
-        width: 150px;
+#marbtn {
+  width: 150px;
+  font-size: 27px;
 }
-#dcbtn{
-    width: 150px;
+#dcbtn {
+  width: 150px;
+  font-size: 27px;
 }
