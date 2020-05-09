@@ -24,7 +24,7 @@ display: inline-block;
   background-color: #1b3036;
 }
 .modal .modal-footer .btn {
-  padding-right: 1470px;
+  padding-right: 40px;
 }
 .waves-effect {
   background-color: rgb(80, 1, 43);
@@ -33,10 +33,10 @@ display: inline-block;
   font-family: "Jockey One", sans-serif;
 }
 /* .input-field label{
-    font-size: 27px;
-    padding-left: 20px;
-    color: white ;
-    font-family: 'Jockey One', sans-serif;
+  font-size: 27px;
+  padding-left: 20px;
+  color: white ;
+  font-family: 'Jockey One', sans-serif;
 } */
 #submit {
   border: 10px solid rgb(31, 1, 1);
@@ -83,7 +83,7 @@ p {
   font-size: 23px;
 }
 .modal-content p {
-  font-size: 30px;
+  font-size: 12px;
 }
 .cardInfo {
   color: whitesmoke;
@@ -101,7 +101,7 @@ p {
 }
 /* 
 .footer .col .s12 {
-    background-color: #880E4F;
+  background-color: #880E4F;
 } */
 .col {
   background-color: #01162b;

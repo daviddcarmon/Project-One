@@ -1,7 +1,5 @@
 $(document).ready(function () {
-
-  $('#modal-content').modal();
-
+  $("#modal-content").modal();
 
   var heroesInfo = [];
   var marvalInfo = [];
@@ -294,7 +292,7 @@ $(document).ready(function () {
     // $(".name").after(characterCombat);
     var heroDiv = $("<div>").attr("id", "hero");
     var backstory = $("<h3>").text("BACKSTORY");
-    var yourHero = $("<h3>").text("YOUR HERO");
+    var yourHero = $("<h3>").text("Your Hero");
     heroDiv.append(
       characterBio,
       characterAliases,
