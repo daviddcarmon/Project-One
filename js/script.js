@@ -5,9 +5,10 @@ $(document).ready(function () {
   var marvalInfo = [];
   var marvalPressed = false;
 
-  superHeroData(1, 200);
-  // superHeroData(100, 199);
-  // superHeroData(200, 299);
+  superHeroData(1, 50);
+  superHeroData(51, 100);
+  superHeroData(151, 200);
+  superHeroData(101, 150);
   // superHeroData(300, 399);
   // superHeroData(400, 499);
   // superHeroData(500, 599);
@@ -107,7 +108,7 @@ $(document).ready(function () {
   function calculateHeroStats() {
     var closestHero = [{}, 700];
     var sideKick = [{}, 700];
-    var nemesis = [{}, 700];
+    var nemesis = [{}, 0];
     var userTotalStats =
       parseInt(userIntelligence) +
       parseInt(userCombat) +
@@ -140,6 +141,15 @@ $(document).ready(function () {
         var totalStats = finalArr.reduce((a, b) => a + b, 0);
       }
       // gets the hero id in heroId
+
+      var different =
+        Math.abs(parseInt(userIntelligence) - hero.powerstats.intelligence) +
+        Math.abs(parseInt(userCombat) - hero.powerstats.combat) +
+        Math.abs(parseInt(userDurability) - hero.powerstats.durability) +
+        Math.abs(parseInt(userPower) - hero.powerstats.power) +
+        Math.abs(parseInt(userSpeed) - hero.powerstats.speed) +
+        Math.abs(parseInt(userStrength) - hero.powerstats.strength);
+
       var heroId = hero.id;
 
       var totalHero = {
@@ -149,7 +159,7 @@ $(document).ready(function () {
       // console.log(totalHero);
       //now we need to decide if the hero is closest to the users hero
       // console.log(typeof userTotalStats);
-      var different = Math.abs(totalHero.total - userTotalStats);
+      //            var different = Math.abs(totalHero.total - userTotalStats);
       // var nextDifferent = Math.abs(totalHero.total - userTotalStats);
       var compare = closestHero[1];
       var compareSideKick = sideKick[1];
@@ -157,6 +167,7 @@ $(document).ready(function () {
       // console.log(" difference", different, closestHero);
       if (different < compare) {
         // console.log("new hero", totalHero);
+        sideKick = closestHero;
         closestHero = [totalHero, different];
         console.log(closestHero);
       }
@@ -185,9 +196,11 @@ $(document).ready(function () {
       }
       if (hero.id === sideKick[0].id) {
         renderSideKickContent(hero);
+        // renderPersonContent(hero, "sidekick");
       }
       if (hero.id === nemesis[0].id) {
         renderNemesisContent(hero);
+        // renderPersonContent(hero, "nemesis");
       }
     });
   }
@@ -275,10 +288,6 @@ $(document).ready(function () {
       .text("Publisher: " + heroesInfo.appearance["race"])
       .css({ "font-size": 26, "line-height": "80%" });
 
-    // var characterPublisher = $("<p>")
-    // .text("Publisher: " + heroesInfo.biography["publisher"])
-    // .css({ "font-size": 26, "line-height": "80%" });
-
     // console.log(typeof heroesInfo.biography);
     // console.log("name: ", characterName);
     // var from MARV api needed
@@ -290,6 +299,7 @@ $(document).ready(function () {
       characterStrength,
       characterSpeed,
       characterPower,
+      characterCombat,
       characterConnection
     );
 
@@ -396,6 +406,7 @@ $(document).ready(function () {
       characterStrength,
       characterSpeed,
       characterPower,
+      characterCombat,
       characterConnection
     );
 
@@ -496,14 +507,13 @@ $(document).ready(function () {
       .text("Publisher: " + heroesInfo.appearance["race"])
       .css({ "font-size": 26, "line-height": "80%" });
 
-    // var characterPublisher = $("<p>")
-    // .text("Publisher: " + heroesInfo.biography["publisher"])
-    // .css({ "font-size": 26, "line-height": "80%" });
-
     // console.log(typeof heroesInfo.biography);
     // console.log("name: ", characterName);
     // var from MARV api needed
     var nemCard = $("<section>").attr({ class: "nemesis card" });
+    var heroCard = $("<section>").attr({ class: `${type} card` });
+    // var nemCard = $("<section>").attr({ class: type + " card" });
+    // var nemStatsDiv = $("<div>").attr("class", `${nemesis}Div`);
     var nemStatsDiv = $("<div>").attr("class", "nemesisDiv");
     nemStatsDiv.append(
       characterName,
@@ -512,10 +522,11 @@ $(document).ready(function () {
       characterStrength,
       characterSpeed,
       characterPower,
+      characterCombat,
       characterConnection
     );
 
-    var nemesisDiv = $("<div>").attr("id", "hero");
+    var nemesisDiv = $("<div>").attr({ id: "hero", class: `${type}` });
 
     nemesisDiv.append(
       characterBio,
@@ -530,25 +541,156 @@ $(document).ready(function () {
     nemCard.append(nemStatsDiv, nemesisDiv);
 
     $("#thirdHero").empty();
+    //if(type === "nemesis")
     $("#thirdHero").append(nemCard);
+    //else if (type === "sidekick")
+    //$("#secHero").append(sideStatsDiv, sideKickDiv);
   }
 
-  function changeButton(event) {
-    // destructure event object
-    var buttonElement = event.target;
-    // get select element data-target
-    var targetElement = $(buttonElement).attr("data-target");
-    // get select element value
-    var characterId = $(buttonElement).val();
-    // get superhero data
-    getSuperheroData(targetElement, characterId);
-    // reset result
-    result.find($(".nav-wrapper")).text("");
+  function renderNemesisContent(heroesInfo, type) {
+    console.log("RENDER!NemesisKICK", heroesInfo);
+    // destructure character data
+    var characterName = $("<h4>")
+      .text(heroesInfo.name)
+      .attr("class", "name")
+      .attr("id", "charaName");
+    var characterImage = $("<img>")
+      .attr("src", heroesInfo.image.url)
+      .css({ width: 100, height: 100 })
+      .attr("id", "img");
+    var characterIntelligence = $("<ul>")
+      .text("Intelligence " + heroesInfo.powerstats.intelligence)
+      .attr("id", "intelligence");
+    var characterStrength = $("<ul>")
+      .text("Strength " + heroesInfo.powerstats.strength)
+      .attr("id", "strength");
+    var characterSpeed = $("<ul>")
+      .text("Speed " + heroesInfo.powerstats.speed)
+      .attr("id", "speed");
+    var characterDurability = $("<ul>")
+      .text("Durability " + heroesInfo.powerstats.durability)
+      .attr("id", "durability");
+    var characterPower = $("<ul>").text("Power " + heroesInfo.powerstats.power);
+    var characterCombat = $("<ul>")
+      .text("Combat " + heroesInfo.powerstats.combat)
+      .attr("id", "combat");
+    var space = $("<br>");
+
+    var characterBio = $("<p>")
+      .attr("id", "name")
+      .text(heroesInfo.biography["full-name"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    // var characterBio = $("<p>").text(bioString).css({ "font-size": 30 });
+    var characterAliases = $("<p>")
+      .attr("id", "aliases")
+      .text(
+        "Aliases: " +
+          heroesInfo.biography["aliases"][0] +
+          " " +
+          heroesInfo.biography["aliases"][1] +
+          " " +
+          heroesInfo.biography["aliases"][2]
+      )
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAlignment = $("<p>")
+      .attr("id", "alignment")
+      .text("Alignment: " + heroesInfo.biography["alignment"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterAlter = $("<p>")
+      .attr("id", "alter")
+      .text("Alter Ego: " + heroesInfo.biography["alter-egos"])
+      .css({ "font-size": 26, "line-height": "80%" });
+    var characterAppearance = $("<p>")
+      .attr("id", "appearance")
+      .text("Fist Appearance: " + heroesInfo.biography["first-appearance"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterBirth = $("<p>")
+      .attr("id", "birth")
+      .text("Birth place: " + heroesInfo.biography["place-of-birth"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterPublisher = $("<p>")
+      .attr("id", "publisher")
+      .text("Publisher: " + heroesInfo.biography["publisher"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterConnection = $("<p>")
+      .attr("id", "connection")
+      .text("Affiliation: " + heroesInfo.connections["group-affiliation"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    var characterRace = $("<p>")
+      .attr("id", "race")
+      .text("Publisher: " + heroesInfo.appearance["race"])
+      .css({ "font-size": 26, "line-height": "80%" });
+
+    // console.log(typeof heroesInfo.biography);
+    // console.log("name: ", characterName);
+    // var from MARV api needed
+    var nemCard = $("<section>").attr({ class: "nemesis card" });
+    var heroCard = $("<section>").attr({ class: `${type} card` });
+    // var nemCard = $("<section>").attr({ class: type + " card" });
+    // var nemStatsDiv = $("<div>").attr("class", `${nemesis}Div`);
+    var nemStatsDiv = $("<div>").attr("class", "nemesisDiv");
+    nemStatsDiv.append(
+      characterName,
+      characterImage,
+      characterIntelligence,
+      characterStrength,
+      characterSpeed,
+      characterPower,
+      characterCombat,
+      characterConnection
+    );
+
+    var nemesisDiv = $("<div>").attr({ id: "hero", class: `${type}` });
+
+    nemesisDiv.append(
+      characterBio,
+      characterAliases,
+      characterAlignment,
+      characterAlter,
+      characterBirth,
+      characterPublisher,
+      characterConnection,
+      characterRace
+    );
+    nemCard.append(nemStatsDiv, nemesisDiv);
+
+    $("#thirdHero").empty();
+    //if(type === "nemesis")
+    $("#thirdHero").append(nemCard);
+    //else if (type === "sidekick")
+    //$("#secHero").append(sideStatsDiv, sideKickDiv);
+  }
+
+  //   $("button").on("click", function () {
+  //     // var arrayToUse;
+  //     if (marvelpressed) {
+  //       // arrayToUse = marvalInfo;
+  //       //anything else
+  //       // marvelFunction()
+  //     } else {
+  //       // arrayToUse = heroesInfo;
+  //       //anything else
+  //       // superHeroFunction()
+  //     }
+  //   });
+  // });
+
+  function clear() {
+    $("#hero").empty();
+    $("#name").empty();
+    $("#backstory").empty();
   }
 });
-
-function clear() {
-  $("#hero").empty();
-  $("#name").empty();
-  $("#backstory").empty();
-}
+// whatever.on("click", function () {
+//   var arrayToUse;
+//   if (marvelpressed) {
+//     marvelFunction();
+//   } else {
+//     superHeroApi();
+//   }
+// });
